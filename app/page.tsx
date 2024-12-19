@@ -1,3 +1,4 @@
+import PatientForm from "@/components/forms/PatientForm";
 import Image from "next/image";
 
 export default function Home() {
@@ -10,9 +11,8 @@ export default function Home() {
         height={1000}
         width={1000}
         alt="patient"
-        className="mb-12 h-10 w-fit"
-
-        />
+        className="mb-12 h-10 w-fit" />
+        <PatientForm />
         </div>
       </section>
       
