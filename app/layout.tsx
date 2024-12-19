@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en" className={fontSans.variable}>
       <head />
       <body
-        className={cn("min-h-screen bg-white-400 font-sans antialiased",fontSans.variable)}
+        className={cn("min-h-screen bg-white-500 font-sans antialiased",fontSans.variable)}
        >
         <ThemeProvider attribute="class" defaultTheme="white">
           {children}

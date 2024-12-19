@@ -26,7 +26,7 @@ const config = {
           600: "#0D2A1F",
         },
         white: {
-          400: "#F8F9FA",
+          500: "#F8F9FA",
         },
         blue: {
           500: "#79B5EC",
