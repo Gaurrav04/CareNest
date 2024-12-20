@@ -21,12 +21,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={fontSans.variable}>
+    <html lang="en" className={`${fontSans.variable} white`}>
       <head />
       <body
-        className={cn("min-h-screen bg-white-500 font-sans antialiased",fontSans.variable)}
-       >
-        <ThemeProvider attribute="class" defaultTheme="white">
+        className={cn(
+          "min-h-screen bg-white-500 font-sans antialiased",
+          fontSans.variable
+        )}
+      >
+        <ThemeProvider attribute="class" defaultTheme="white" enableSystem={false}>
           {children}
         </ThemeProvider>
       </body>

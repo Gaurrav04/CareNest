@@ -26,7 +26,7 @@ const config = {
           600: "#0D2A1F",
         },
         white: {
-          500: "#F8F9FA",
+          500: "#F8F9FA", 
         },
         blue: {
           500: "#79B5EC",
@@ -41,6 +41,9 @@ const config = {
         yellow: {
           500: "#FFD700",
         },
+        orange: {
+          600: "#FF8C00",
+        },
         light: {
           200: "#E8E9E9",
         },
@@ -50,7 +53,7 @@ const config = {
           400: "#1A1D21",
           500: "#363A3D",
           600: "#76828D",
-          700: "#ABB8C4",
+          700: "#8F9BAA",
         },
       },
       fontFamily: {
