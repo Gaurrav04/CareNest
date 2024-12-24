@@ -6,6 +6,11 @@ import { z } from "zod" // Zod for Validation
 import { Button } from "@/components/ui/button"
 import {Form } from "@/components/ui/form"
 import CustomFormField from "../CustomFormField"
+import SubmitButton from "../SubmitButton"
+import { useState } from "react"
+import { UserFormValidation } from "@/lib/validation"
+import { useRouter } from "next/navigation"
+import { createUser } from "@/lib/actions/patient.actions"
 
 export enum FormFieldType {
   INPUT = 'input',
@@ -24,15 +29,31 @@ const formSchema = z.object({
 })
  
 const PatientForm = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const form = useForm<z.infer<typeof UserFormValidation>>({
+    resolver: zodResolver(UserFormValidation),
     defaultValues: {
-      username: "",
+      name: "",
+      email: "",
+      phone: "",
     },
   })
  
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+  async function onSubmit({name, email, phone }: z.infer<typeof UserFormValidation>) {
+    setIsLoading(true);
+
+    try {
+      const userData = { name, email, phone }
+
+      const user = await createUser(userData);
+
+      if(user) router.push(`/patients/${user.$id}/register`)
+      
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -75,7 +96,10 @@ const PatientForm = () => {
             placeholder="(91+) 9889897656"
         />
         
-      <Button type="submit">Submit</Button>
+        <SubmitButton isLoading={isLoading} className="shad-primary-btn ">
+          Get Started
+        </SubmitButton>
+
     </form>
   </Form>
   )
