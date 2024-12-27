@@ -55,9 +55,8 @@ export const getUser = async (userId: string) => {
   
       let file;
   
-      // Ensure that userId is included, either from the patient or the authenticated user
-      const finalUserId = userId || "default-user-id"; // Replace with the logic to get the authenticated user's ID
-      console.log('Final UserId:', finalUserId); // Debugging line
+      const finalUserId = userId || "default-user-id"; 
+      console.log('Final UserId:', finalUserId); 
   
       if (identificationDocument) {
         const inputFile = InputFile.fromBuffer(
@@ -66,25 +65,24 @@ export const getUser = async (userId: string) => {
         )
   
         file = await storage.createFile(BUCKET_ID!, ID.unique(), inputFile)
-        console.log('File created with ID:', file?.$id); // Debugging line
+        console.log('File created with ID:', file?.$id); 
       }
   
-      // Pass the patient object directly, ensuring userId is included
       const newPatient = await databases.createDocument(
         DATABASE_ID!,
         PATIENT_COLLECTION_ID!,
         ID.unique(),
         {
-          userId: finalUserId, // Ensure userId is set here
+          userId: finalUserId, 
           identificationDocumentId: file?.$id ? file.$id : null,
           identificationDocumentUrl: file?.$id
             ? `${ENDPOINT}/storage/buckets/${BUCKET_ID}/files/${file.$id}/view??project=${PROJECT_ID}`
             : null,
-          ...patient, // Spread the rest of the patient data
+          ...patient, 
         }
       );
     
-      console.log('New patient created:', newPatient); // Debugging line
+      console.log('New patient created:', newPatient); 
   
       return parseStringify(newPatient);
     } catch (error) {
