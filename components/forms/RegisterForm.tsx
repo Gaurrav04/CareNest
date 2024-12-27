@@ -199,7 +199,7 @@ async function onSubmit(values: z.infer<typeof PatientFormValidation>) {
             fieldType={FormFieldType.SELECT}
             control={form.control}
             name="primaryPhysician"
-            label="Primary care physician"
+            label="Primary physician"
             placeholder="Select a physician"
           >
             {Doctors.map((doctor ) => (
