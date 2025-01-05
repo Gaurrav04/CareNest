@@ -9,6 +9,9 @@ Run the development server:
 
 
 ```bash
+
+npm install - To install the packages
+
 npm run dev
 # or
 yarn dev
